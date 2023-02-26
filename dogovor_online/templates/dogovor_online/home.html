@@ -1,0 +1,20 @@
+{% extends 'dogovor_online/base.html' %}
+{% block title %}
+Договоры онлайн без регистрации
+{% endblock %}
+{% block main_content %}
+<div class="main_objects">
+    {% for item in Objects %}
+    <div class="">
+    
+    <h2> {{ item.name }}</h2>
+<!--    <p>{{ item.sluck }}</p>-->
+    {% for i in item.dogovors.all %}
+    <a href="{% url item.sluck i.url %}">{{ i }}</a><br>
+    {% endfor %}
+</div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

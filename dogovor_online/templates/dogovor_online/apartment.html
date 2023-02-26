@@ -1,0 +1,25 @@
+{% extends 'dogovor_online/base.html' %}
+{% block title %}
+{{ deal }} {{ object }}
+{% endblock %}
+{% block main_content %}
+
+<span style="color:red; font-weight: bold">{{ error }}</span>
+    <form enctype='multipart/form-data' method="POST">
+        {% csrf_token %}
+        <div class="parties">
+            <div class="party_1">
+                <h2>{{ party1 }}</h2>
+                {{party1form.as_p}}
+            </div>
+            <div class="party_2">
+                <h2>{{ party2 }}</h2>
+                {{party2form.as_p}}
+            </div>
+        </div>
+        <h2>Характеристики {{ object }}</h2>
+        {{apartmentForm.as_p}}
+        <button type="submit" class="btn btn-primary">Сформировать договор</button>
+    </form>
+
+{% endblock %}
