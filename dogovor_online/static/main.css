@@ -23,11 +23,28 @@ a {
 
 .parties {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-row-gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 40px;
 
 }
 
 .parties h2 {
     margin-bottom: 30px;
+}
+
+
+.parties .name_field_form {
+    margin-bottom: 5px;
+}
+
+.field_form > input {
+    width:100%;
+}
+
+.party {
+    padding: 20px;
+    background-color: rgba(93, 207, 195, 0.2);
+    border-radius: 20px;
+    margin-bottom: 30px;
+
 }

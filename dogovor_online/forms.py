@@ -25,7 +25,8 @@ class PartyFl_2_Form(forms.Form):
     registration_2 = forms.CharField(max_length=200, label='Адрес регистрации')
 
 
-class Apartment_Form(forms.Form):
+# Формы для объектов договора
+class ApartmentForm(forms.Form):
     # Характеристики квартиры
     kadastr_number = forms.CharField(max_length=100, label='Кадастровый номер')
     apart_address = forms.CharField(max_length=200, label='Адрес квартиры')
@@ -33,6 +34,32 @@ class Apartment_Form(forms.Form):
     life_space = forms.FloatField(label='Жилая площадь')
     floor = forms.IntegerField(max_value=50, label='Этаж')
     floor_all = forms.IntegerField(max_value=50, label='Всего этажей')
+    registered = forms.ChoiceField(choices=(('No', 'Нет'), ('Yes', 'Да'),), label='Зарегистрированные лица')
+    arested = forms.ChoiceField(choices=(('No', 'Нет'), ('Yes', 'Да'),), label='Обременения')
+
+
+class HouseForm(forms.Form):
+    # Характеристики квартиры
+    kadastr_number = forms.CharField(max_length=100, label='Кадастровый номер дома')
+    apart_address = forms.CharField(max_length=200, label='Адрес дома')
+    full_space = forms.FloatField(label='Общая площадь дома')
+    life_space = forms.FloatField(label='Жилая площадь дома')
+    floor = forms.IntegerField(max_value=50, label='Количество этажей')
+    registered = forms.ChoiceField(choices=(('No', 'Нет'), ('Yes', 'Да'),), label='Зарегистрированные лица')
+    arested = forms.ChoiceField(choices=(('No', 'Нет'), ('Yes', 'Да'),), label='Обременения')
+
+class ZemlyaForm(forms.Form):
+    kadastr_number_zemlya = forms.CharField(max_length=100, label='Кадастровый номер земельного участка')
+    zemlya_address = forms.CharField(max_length=200, label='Адрес земельного участка')
+    zemlya_space = forms.FloatField(label='Площадь земельного участка')
+    arested = forms.ChoiceField(choices=(('No', 'Нет'), ('Yes', 'Да'),), label='Обременения')
+
+
+# Формы для видов договора
+class SaleForm(forms.Form):
+    date = forms.DateField(label='Дата подписания договора')
+    location = forms.CharField(max_length=100, label='Место подписания договора')
+    deal_number = forms.CharField(max_length=100, label='Номер договора')
+    payment = forms.ChoiceField(choices=(('Cash', 'Наличные'), ('Online', 'Банковский перевод'), ('Accredit', 'Аккредитив'),), label='Оплата')
     price_digit = forms.IntegerField(label='Цена продажи цифрами')
     price_string = forms.CharField(max_length=200, label='Цена продажи прописью')
-    registered = forms.BooleanField(required=False, label='Есть зарегистрированные?')
