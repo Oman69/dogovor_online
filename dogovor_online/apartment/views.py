@@ -1,8 +1,8 @@
-from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+
 from dogovor_online.forms import PartyFl_1_Form, PartyFl_2_Form, SaleForm
+from dogovor_online.models import Dogovor
 from .forms import ApartmentForm
-from ..models import Dogovor
 
 
 def index(request, dogovor):
@@ -11,7 +11,6 @@ def index(request, dogovor):
         party1form = PartyFl_1_Form(request.POST)
         party2form = PartyFl_2_Form(request.POST)
         typeForm = ApartmentForm(request.POST)
-
 
         if dogovor == 'sale':
             dealForm = SaleForm(request.GET)
@@ -44,7 +43,6 @@ def index(request, dogovor):
     else:
         party1 = 'Сторона 1'
         party2 = 'Сторона 2'
-
 
     context = {
         'object': 'квартиры',
