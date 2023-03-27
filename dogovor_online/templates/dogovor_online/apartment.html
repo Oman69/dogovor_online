@@ -22,6 +22,7 @@
                 {% endfor %}
                 </div>
             </div>
+
             <div class="party">
                 <h2>{{ party2 }}</h2>
                 <div class="parties">
@@ -34,6 +35,7 @@
                 {% endfor %}
                 </div>
             </div>
+
             <div class="party">
             <h2>Характеристики {{ object }}</h2>
                 <div class="parties">
@@ -46,6 +48,7 @@
                 {% endfor %}
             </div>
             </div>
+
             <div class="party">
             <h2>Данные договора </h2>
                 <div class="parties">
@@ -61,5 +64,6 @@
 
         <button type="submit" class="btn btn-primary">Сформировать договор</button>
     </form>
+<a href="{% url 'show_deal' %}"> Сформировать договор</a>
 
 {% endblock %}
