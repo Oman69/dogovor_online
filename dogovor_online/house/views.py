@@ -2,10 +2,11 @@ from django.shortcuts import render
 
 from dogovor_online.forms import PartyFl_1_Form, PartyFl_2_Form, SaleForm
 from dogovor_online.models import Dogovor
-from .forms import ApartmentForm
+from .forms import HouseForm
 
 
-def apartment(request, dogovor):
+def house(request, dogovor):
+    deal = Dogovor.objects.get(url=dogovor).name
     if request.method == 'POST':
         cur_responce = request.POST
     else:
@@ -17,13 +18,10 @@ def apartment(request, dogovor):
              'ipoteka': [SaleForm(cur_responce),'Продавец','Покупатель']}
     party1form = PartyFl_1_Form(cur_responce)
     party2form = PartyFl_2_Form(cur_responce)
-    typeForm = ApartmentForm(cur_responce)
-
-
-    deal = Dogovor.objects.get(url=dogovor).name
+    typeForm = HouseForm(cur_responce)
 
     context = {
-        'object': 'квартиры',
+        'object': 'частного дома',
         'deal': deal,
         'seotitle': 'онлайн бесплатно без регистрации',
         'party1': types[dogovor][1],

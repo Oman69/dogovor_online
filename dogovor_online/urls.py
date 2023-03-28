@@ -1,13 +1,14 @@
 from django.urls import path
 from dogovor_online import views
-from dogovor_online import apartment, house, room
+from dogovor_online.apartment.views import apartment
+from dogovor_online.house.views import house
 
 urlpatterns = [
     path('', views.home, name='home'),
     # Квартира
-    path('apartment/<slug:dogovor>/', apartment.views.index, name='apartment'),
+    path('apartment/<slug:dogovor>/', apartment, name='apartment'),
     # Жилой дом
-    path('house/<slug:dogovor>/', views.house, name='house'),
+    path('house/<slug:dogovor>/', house, name='house'),
     # Комната
     path('room/<slug:dogovor>/', views.room, name='room'),
     # Гараж
