@@ -1,6 +1,6 @@
 from django.shortcuts import render
-
-from dogovor_online.forms import PartyFl_1_Form, PartyFl_2_Form, SaleForm
+from dogovor_online.parties.forms import PartyFl_1_Form, PartyFl_2_Form
+from dogovor_online.forms import SaleForm, RentForm, FreeForm, BankForm, NaimForm
 from dogovor_online.models import Dogovor
 from .forms import ApartmentForm
 
@@ -12,9 +12,9 @@ def apartment(request, dogovor):
         cur_responce = request.GET
 
     types = {'sale': [SaleForm(cur_responce),'Продавец','Покупатель'],
-             'naim': [SaleForm(cur_responce),'Наймодатель','Наниматель'],
-             'darenie': [SaleForm(cur_responce),'Даритель','Одаряемый'],
-             'ipoteka': [SaleForm(cur_responce),'Продавец','Покупатель']}
+             'naim': [RentForm(cur_responce),'Наймодатель','Наниматель'],
+             'darenie': [FreeForm(cur_responce),'Даритель','Одаряемый'],
+             'ipoteka': [BankForm(cur_responce),'Продавец','Покупатель']}
     party1form = PartyFl_1_Form(cur_responce)
     party2form = PartyFl_2_Form(cur_responce)
     typeForm = ApartmentForm(cur_responce)
@@ -34,4 +34,4 @@ def apartment(request, dogovor):
         'dealForm': types[dogovor][0],
     }
 
-    return render(request, 'dogovor_online/apartment.html', context)
+    return render(request, 'dogovor_online/form.html', context)

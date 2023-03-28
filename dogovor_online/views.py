@@ -2,8 +2,7 @@ from typing import Dict
 
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-from .models import ObjectByDogovor, Dogovor
-from .forms import PartyFl_1_Form, PartyFl_2_Form, SaleForm
+from .models import ObjectByDogovor
 
 
 def home(request):
@@ -34,6 +33,6 @@ def services(request, dogovor):
 
 
 def show_deal(request):
-    sername_1 = request.GET.get('sername_1', '')
-    name_1 = request.GET.get('name_1', '')
+    sername_1 = request.POST['sername_1']
+    name_1 = request.POST['name_1']
     return HttpResponse(f'{sername_1} {name_1}')
