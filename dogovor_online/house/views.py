@@ -1,8 +1,5 @@
 from django.shortcuts import render
-from dogovor_online.parties.forms import PartyFl_1_Form, PartyFl_2_Form
-from dogovor_online.forms import SaleForm, RentForm, FreeForm, BankForm, NaimForm
 from dogovor_online.models import Dogovor
-from .forms import HouseForm
 from dogovor_online.views import get_forms_type
 
 

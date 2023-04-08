@@ -23,7 +23,7 @@ class NaimForm(forms.Form):
     pass
 
 
-class FreeForm(forms.Form):
+class DarenieForm(forms.Form):
     pass
 
 

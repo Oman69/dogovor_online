@@ -3,10 +3,11 @@ from typing import Dict
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
+from .apartment import fish
 from .apartment.forms import ApartmentForm
-from .forms import SaleForm, NaimForm, RentForm, FreeForm, BankForm
+from .forms import SaleForm, NaimForm, RentForm, DarenieForm, BankForm
 from .house.forms import HouseForm
-from .models import ObjectByDogovor
+from .models import ObjectByDogovor, Dogovor
 from .parties.forms import PartyFl_1_Form, PartyFl_2_Form
 
 
@@ -34,7 +35,7 @@ def get_forms_type(request):
     types = {'sale': [SaleForm(cur_responce), 'Продавец', 'Покупатель'],
              'naim': [NaimForm(cur_responce), 'Наймодатель', 'Наниматель'],
              'arenda': [RentForm(cur_responce), 'Арендодатель', 'Арендатор'],
-             'darenie': [FreeForm(cur_responce), 'Даритель', 'Одаряемый'],
+             'darenie': [DarenieForm(cur_responce), 'Даритель', 'Одаряемый'],
              'ipoteka': [BankForm(cur_responce), 'Продавец', 'Покупатель']}
     party1form = PartyFl_1_Form(cur_responce)
     party2form = PartyFl_2_Form(cur_responce)
@@ -62,7 +63,15 @@ def services(request, dogovor):
     return render(request, 'dogovor_online/services.html')
 
 
-def show_deal(request):
-    sername_1 = request.POST['sername_1']
-    name_1 = request.POST['name_1']
-    return HttpResponse(f'{sername_1} {name_1}')
+def show_deal(request, dogovor):
+    all_params = request.POST
+    deal = Dogovor.objects.get(url=dogovor).name
+
+    context = {
+
+        'all_params': all_params,
+        'TEXT': fish.text[dogovor],
+        'deal': deal
+    }
+    # return render(request, 'dogovor_online/show_deal.html', context)
+    return render(request, f'apartment/{dogovor}.html', context)

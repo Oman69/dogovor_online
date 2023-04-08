@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from dogovor_online.models import Dogovor
+from dogovor_online.models import Dogovor, ObjectByDogovor
 from dogovor_online.views import get_forms_type
 
 
 def apartment(request, dogovor):
     params = get_forms_type(request)
-
+    objects = ObjectByDogovor.objects.all()
     deal = Dogovor.objects.get(url=dogovor).name
 
     context = {
@@ -18,6 +18,7 @@ def apartment(request, dogovor):
         'party2form': params['party2form'],
         'typeForm': params['typeForm']['apartment'],
         'dealForm': params['types'][dogovor][0],
+        'Objects': objects
     }
 
     return render(request, 'dogovor_online/form.html', context)

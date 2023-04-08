@@ -3,9 +3,16 @@
 {{ deal }} {{ object }} | {{ seotitle }}
 {% endblock %}
 {% block main_content %}
+<div class="main_heading">
+    <h1>{{ deal }} {{ object }}</h1>
+</div>
 
 <span style="color:red; font-weight: bold">{{ error }}</span>
-    <form enctype='multipart/form-data' method="POST">
+    {% for item in Objects %}
+    {% for i in item.dogovors.all %}
+    <form enctype='multipart/form-data' method="POST" action="{% url 'show_deal' i.url %}">
+    {% endfor %}
+    {% endfor %}
         {% csrf_token %}
 
             <div class="party">
@@ -64,6 +71,5 @@
 
         <button type="submit" class="btn btn-primary">Сформировать договор</button>
     </form>
-<a href="{% url 'show_deal' %}"> Сформировать договор</a>
 
 {% endblock %}

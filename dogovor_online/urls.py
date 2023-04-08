@@ -3,6 +3,7 @@ from dogovor_online import views
 from dogovor_online.apartment.views import apartment
 from dogovor_online.house.views import house
 
+
 urlpatterns = [
     path('', views.home, name='home'),
     # Квартира
@@ -20,6 +21,6 @@ urlpatterns = [
     # Услуги
     path('services/<slug:dogovor>/', views.services, name='services'),
     # Cформировать договор
-    path('show_deal/', views.show_deal, name='show_deal'),
+    path('show_deal/<slug:dogovor>/', views.show_deal, name='show_deal'),
 
 ]
