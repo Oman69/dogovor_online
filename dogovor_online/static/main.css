@@ -49,7 +49,36 @@ a {
 
 }
 
-.main_heading {
+.deal_heading {
+    font-family: 'Times New Roman', Times, serif;
     margin-bottom: 30px;
-    text-align:center;
+    text-align: center;
+    font-weight: 800;
+}
+
+
+
+.deal_params {
+    font-family: 'Times New Roman', Times, serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 20px;
+}
+
+.tac {
+    text-align: center;
+}
+
+.tar {
+    text-align: right;
+}
+
+
+.deal_txt {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+}
+
+.bold {
+    font-weight: 800;
 }

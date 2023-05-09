@@ -70,8 +70,7 @@ def show_deal(request, dogovor):
     context = {
 
         'all_params': all_params,
-        'TEXT': fish.text[dogovor],
-        'deal': deal
+        'deal': deal,
+        'object': 'квартиры'
     }
-    # return render(request, 'dogovor_online/show_deal.html', context)
     return render(request, f'apartment/{dogovor}.html', context)
