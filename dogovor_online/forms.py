@@ -14,7 +14,7 @@ class SaleForm(forms.Form):
     date = forms.DateField(label='Дата подписания договора')
     location = forms.CharField(max_length=100, label='Место подписания договора')
     deal_number = forms.CharField(max_length=100, label='Номер договора')
-    payment = forms.ChoiceField(choices=(('Cash', 'Наличные'), ('Online', 'Банковский перевод'), ('Accredit', 'Аккредитив'),), label='Оплата')
+    payment = forms.ChoiceField(choices=(('1', 'Наличные'), ('2', 'Банковский перевод'), ('3', 'Аккредитив'),), label='Оплата')
     price_digit = forms.IntegerField(label='Цена продажи цифрами')
     price_string = forms.CharField(max_length=200, label='Цена продажи прописью')
 

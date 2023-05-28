@@ -22,5 +22,7 @@ urlpatterns = [
     path('services/<slug:dogovor>/', views.services, name='services'),
     # Cформировать договор
     path('show_deal/<slug:dogovor>/', views.show_deal, name='show_deal'),
+    # Экспорт в Word
+    path('show_deal/to_word/', views.export_to_word, name='to_word'),
 
 ]

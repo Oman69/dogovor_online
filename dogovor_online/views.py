@@ -3,7 +3,6 @@ from typing import Dict
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
-from .apartment import fish
 from .apartment.forms import ApartmentForm
 from .forms import SaleForm, NaimForm, RentForm, DarenieForm, BankForm
 from .house.forms import HouseForm
@@ -24,13 +23,6 @@ def get_forms_type(request):
         cur_responce = request.POST
     else:
         cur_responce = request.GET
-
-    # if form.is_valid():
-    #     student = form.save(commit=False)
-    #     # commit=False tells Django that "Don't send this to database yet.
-    #     # I have more things I want to do with it."
-    #     student.user = request.user  # Set the user object here
-    #     student.save()  # Now you can send it to DB
 
     types = {'sale': [SaleForm(cur_responce), 'Продавец', 'Покупатель'],
              'naim': [NaimForm(cur_responce), 'Наймодатель', 'Наниматель'],
@@ -74,3 +66,8 @@ def show_deal(request, dogovor):
         'object': 'квартиры'
     }
     return render(request, f'apartment/{dogovor}.html', context)
+
+
+def export_to_word(request):
+    print('Export start...')
+    return HttpResponse('Export start...')

@@ -82,3 +82,8 @@ a {
 .bold {
     font-weight: 800;
 }
+
+.parties_small {
+    display: grid;
+    grid-template-columns: 1fr 1fr
+}
