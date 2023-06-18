@@ -1,14 +1,13 @@
 from django.shortcuts import render
 from dogovor_online.models import Dogovor, ObjectByDogovor
 from dogovor_online.views import get_forms_type
-from sale import string_to_data
-from django.http import HttpResponse
 
 
 def apartment(request, dogovor):
     params = get_forms_type(request)
     objects = ObjectByDogovor.objects.all()
     deal = Dogovor.objects.get(url=dogovor).name
+    # request.POST['object'] = 'apartment'
 
     context = {
         'object': 'квартиры',
@@ -23,5 +22,4 @@ def apartment(request, dogovor):
         'Objects': objects
     }
 
-    string_to_data(context)
     return render(request, 'dogovor_online/form.html', context)

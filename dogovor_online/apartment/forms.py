@@ -3,6 +3,7 @@ from django import forms
 
 class ApartmentForm(forms.Form):
     # Характеристики квартиры
+    object = forms.ChoiceField(choices=(('apartment', 'Квартира'),), label='Объект недвижимости')
     kadastr_number = forms.CharField(max_length=100, label='Кадастровый номер')
     apart_address = forms.CharField(max_length=200, label='Адрес квартиры')
     full_space = forms.FloatField(label='Общая площадь')

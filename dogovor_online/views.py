@@ -4,10 +4,14 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
 from .apartment.forms import ApartmentForm
+from .apartment.sale import string_to_data
 from .forms import SaleForm, NaimForm, RentForm, DarenieForm, BankForm
 from .house.forms import HouseForm
 from .models import ObjectByDogovor, Dogovor
 from .parties.forms import PartyFl_1_Form, PartyFl_2_Form
+
+OBJECTS_DICT = {'apartment': 'квартиры', 'house': 'частного дома', "room": 'комнаты', 'land': 'земельного участка',
+                'garage': 'гаража'}
 
 
 def home(request):
@@ -58,14 +62,18 @@ def services(request, dogovor):
 def show_deal(request, dogovor):
     all_params = request.POST
     deal = Dogovor.objects.get(url=dogovor).name
+    if request.method == 'POST':
+        cur_object = OBJECTS_DICT[all_params['object']]
+    else:
+        cur_object = 'apartment'
 
     context = {
-
         'all_params': all_params,
         'deal': deal,
-        'object': 'квартиры'
+        'object': cur_object
     }
-    return render(request, f'apartment/{dogovor}.html', context)
+    string_to_data(context)
+    return render(request, f'{all_params["object"]}/{dogovor}.html', context)
 
 
 def export_to_word(request):
